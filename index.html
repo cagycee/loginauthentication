@@ -1,59 +1,82 @@
 <!DOCTYPE html>
+<!-- copyright cagycee | Made Sunday, November 15th v0.1-->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="js/f1.js"></script>
-    <title>Document</title>
+    <title>Login Form!</title>
+    <script src="https://cdn.jsdelivr.net/gh/cagycee/cLibrary@6ced5f1/f1.js"></script> <!-- Includes cLibrary -->
+    <script src="js/clients.js"></script> <!-- login database in object form -->
+    <script src="js/f1.js"></script> <!-- login functions -->
+    <style>
+        #vEmail {
+            color: red;
+            font-weight: bold;
+        }
+        #vPassword {
+            color: red;
+            font-weight: bold;
+        }
+        #vRePassword {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-    <h1>Login Form</h1>
-    <p id="err" style="color: red;"></p>
-    <table id="loginForm">
-        <tr>
-            <td style="text-align: center;">Email: </td>
-            <td><input type="text" /></td>
-        </tr>
-        <tr>
-            <td style="text-align: center;"">Password: </td>
-            <td><input type="password" /></td>
-        </tr>
-        <tr>
-            <td style="text-align: right;"><input type="checkbox" /></td>
-            <td>Remember Me!</td>
-        </tr>
-        <tr>
-            <td><button>Login!</button></td>
-        </tr>
-        <tr>
-            <td>No account?</td>
-            <td><a href="javascript:void(0);">Register!</a></td>
-        </tr>
-    </table>
-    <script id="registration" type="text/html">
+    <div id="form"></div> <!-- FORM START -->
+    <script id="registrationF" type="text/html"> <!-- Registration Form (hidden)-->
         <h1>Registration Form</h1>
         <p id="err" style="color: red;"></p>
         <table id="loginForm">
             <tr>
                 <td style="text-align: center;">Email: </td>
-                <td><input type="text" /></td>
+                <td><input id="remail" type="text" /><span id="vEmail"></span></td>
             </tr>
             <tr>
                 <td style="text-align: center;"">Password: </td>
-                <td><input type="password" /></td>
+                <td><input id="rpass" type="password" /><span id="vPassword"></span></td>
+            </tr>
+            <tr>
+                <td style="text-align: center;"">Re-Password: </td>
+                <td><input id="rrepass" type="password" /><span id="vRePassword"></span></td>
+            </tr>
+            <tr>
+                <td><button onclick="setImp();">Register!</button></td>
+            </tr>
+            <tr>
+                <td>Already Registered?</td>
+                <td><a href="javascript:void(0);" onclick="switchAuth('login');">Login!</a></td>
+            </tr>
+        </table>
+    </script>
+    <script id="loginF" type="text/html"> <!-- Login Form (hidden)-->
+        <h1>Login Form</h1>
+        <p id="err" style="color: red;"></p>
+        <table id="loginForm">
+            <tr>
+                <td style="text-align: center;">Email: </td>
+                <td><input id="lemail" type="text" /><span id="vEmail"></span></td>
+            </tr>
+            <tr>
+                <td style="text-align: center;"">Password: </td>
+                <td><input id="lpassword" type="password" /><span id="vPassword"></span></td>
             </tr>
             <tr>
                 <td style="text-align: right;"><input type="checkbox" /></td>
                 <td>Remember Me!</td>
             </tr>
             <tr>
-                <td><button>Login!</button></td>
+                <td><button onclick="authLogin();">Login!</button></td>
             </tr>
             <tr>
-                <td>Already Registered?</td>
-                <td><a href="javascript:void(0);">Login!</a></td>
+                <td>No account?</td>
+                <td><a href="javascript:void(0);" onclick="switchAuth('registration');">Register!</a></td>
             </tr>
-        </table>
+        </table> <br>
+        <span style="font-size: 10pt; color: green; font-weigh: bold;">Notice: </span> 
+        <span style="color: green; font-size: 10pt;">please see line 18-21 on ( js/f1.js ) before using on published material!</span>
     </script>
+    <script>cc.HTML.replace('form', cc.HTML.value('loginF', 'html'));</script>
 </body>
 </html>
